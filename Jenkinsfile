@@ -1,7 +1,9 @@
 
 pipeline {
     agent any
-
+    environment {
+      PATH = "$PATH:/tmp/workspace/flutter/bin"
+    }
     stages {
         stage('GIT PULL') {
             steps {
@@ -11,6 +13,18 @@ pipeline {
         stage('ECHO') {
             steps {
                 sh 'echo "$PWD"'
+            }
+        }
+
+        stage('Setup') {
+            steps {
+                print "${env.PATH}"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh "flutter doctor -v"
             }
         }
         stage('TEST') {
