@@ -8,6 +8,11 @@ pipeline {
                 git branch: "main", url: 'https://github.com/mongvaka/test_build_android.git'
             }
         }
+        stage('ECHO') {
+            steps {
+                sh 'echo "$PWD"'
+            }
+        }
         stage('TEST') {
             steps {
                 sh 'flutter test'
