@@ -8,6 +8,12 @@ pipeline {
                 git branch: "main", url: 'https://github.com/mongvaka/test_build_android.git'
             }
         }
+
+        stage('Pre Build') {
+            steps {
+                sh "flutter doctor -v"
+            }
+        }
         stage('TEST') {
             steps {
                 sh 'flutter test'
