@@ -10,17 +10,6 @@ pipeline {
                 git branch: "main", url: 'https://github.com/mongvaka/test_build_android.git'
             }
         }
-        stage('ECHO') {
-            steps {
-                sh 'echo "$PWD"'
-            }
-        }
-
-        stage('Setup') {
-            steps {
-                print "${env.PATH}"
-            }
-        }
 
         stage('Build') {
             steps {
